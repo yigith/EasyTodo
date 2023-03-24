@@ -15,7 +15,15 @@
         const apiUrl = "https://localhost:7233/api/TodoItems";
 
         fetch(apiUrl)
-
+            .then(response => response.json())
+            .then(data => {
+                const todos = document.getElementById("todos");
+                data.forEach(todo => {
+                    const li = document.createElement("li");
+                    li.textContent = todo.title;
+                    todos.appendChild(li);
+                });
+            });
     </script>
 </body>
 
